@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detailed summary of An Introduction to Statistical Learning with Applications in Python for MSDA9223 Data Mining and Information Retrieval">
+    <meta name="keywords" content="statistical learning, python, data mining, machine learning, MSDA9223">
+    <meta name="author" content="Nyirimanzi Jean Claude">
+    <meta property="og:title" content="An Introduction to Statistical Learning - Summary">
+    <meta property="og:description" content="A comprehensive summary of statistical learning methods with Python applications and examples for MSDA9223.">
+    <meta property="og:type" content="website">
+    <title>An Introduction to Statistical Learning - Summary</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fa;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark-mode {
+            background-color: #1c2526;
+            color: #e0e0e0;
+        }
+        .navbar {
+            background-color: #1a3c6e;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar.dark-mode {
+            background-color: #0f1c2e;
+        }
+        .sticky-toc {
+            position: sticky;
+            top: 80px;
+        }
+        .chapter-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            z-index: 1000;
+        }
+        .accordion-button {
+            font-weight: 600;
+            color: #1a3c6e;
+        }
+        .accordion-button.dark-mode {
+            color: #a3c1ff;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: #e6f0ff;
+            color: #1a3c6e;
+        }
+        .accordion-button.dark-mode:not(.collapsed) {
+            background-color: #2a3c5a;
+            color: #a3c1ff;
+        }
+        footer {
+            background-color: #1a3c6e;
+        }
+        footer.dark-mode {
+            background-color: #0f1c2e;
+        }
+        .card.dark-mode {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: #1a3c6e;
+            z-index: 1000;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .dark-mode pre {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+        .key-term {
+            font-weight: bold;
+            color: #1a3c6e;
+        }
+        .dark-mode .key-term {
+            color: #a3c1ff;
+        }
+        .math-formula {
+            font-style: italic;
+            background-color: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+        .dark-mode .math-formula {
+            background-color: #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="scrollProgress" role="progressbar" style="width: 0%"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" aria-label="Main navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#">ISLP Summary</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#toc">Table of Contents</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/nyirimanzijeanclaude/data_mining">GitHub</a></li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light" id="themeToggle" aria-label="Toggle dark mode">Dark Mode</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold">An Introduction to Statistical Learning with Applications in Python</h1>
+            <p class="lead">Summary for MSDA9223: Data Mining and Information Retrieval</p>
+            <p class="text-muted">Academic Year: 2024-2025, Semester 2 | Instructor: Dr. Pacificique Nizevimana</p>
+            <a href="#download" class="btn btn-outline-light mt-3">Download PDF Summary</a>
+        </div>
+    </header>
+
+    <div class="container my-5">
+        <div class="row">
+            <!-- Sticky Table of Contents -->
+            <div class="col-lg-3 sticky-toc">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Table of Contents</h5>
+                    </div>
+                    <div class="card-body" id="toc">
+                        <input type="text" id="chapterSearch" class="form-control search-bar" placeholder="Search chapters..." aria-label="Search chapters">
+                        <ul class="list-group list-group-flush" id="tocList">
+                            <li class="list-group-item"><a href="#overview" class="text-primary">Overview</a></li>
+                            <li class="list-group-item"><a href="#chapter1" class="text-primary" onclick="openAccordion('chapter1')">Chapter 1: Introduction</a></li>
+                            <li class="list-group-item"><a href="#chapter2" class="text-primary" onclick="openAccordion('chapter2')">Chapter 2: Statistical Learning</a></li>
+                            <li class="list-group-item"><a href="#chapter3" class="text-primary" onclick="openAccordion('chapter3')">Chapter 3: Linear Regression</a></li>
+                            <li class="list-group-item"><a href="#chapter4" class="text-primary" onclick="openAccordion('chapter4')">Chapter 4: Classification</a></li>
+                            <li class="list-group-item"><a href="#chapter5" class="text-primary" onclick="openAccordion('chapter5')">Chapter 5: Resampling Methods</a></li>
+                            <li class="list-group-item"><a href="#chapter6" class="text-primary" onclick="openAccordion('chapter6')">Chapter 6: Linear Model Selection</a></li>
+                            <li class="list-group-item"><a href="#chapter7" class="text-primary" onclick="openAccordion('chapter7')">Chapter 7: Moving Beyond Linearity</a></li>
+                            <li class="list-group-item"><a href="#chapter8" class="text-primary" onclick="openAccordion('chapter8')">Chapter 8: Tree-Based Methods</a></li>
+                            <li class="list-group-item"><a href="#chapter9" class="text-primary" onclick="openAccordion('chapter9')">Chapter 9: Support Vector Machines</a></li>
+                            <li class="list-group-item"><a href="#chapter10" class="text-primary" onclick="openAccordion('chapter10')">Chapter 10: Deep Learning</a></li>
+                            <li class="list-group-item"><a href="#chapter11" class="text-primary" onclick="openAccordion('chapter11')">Chapter 11: Survival Analysis</a></li>
+                            <li class="list-group-item"><a href="#chapter12" class="text-primary" onclick="openAccordion('chapter12')">Chapter 12: Unsupervised Learning</a></li>
+                            <li class="list-group-item"><a href="#chapter13" class="text-primary" onclick="openAccordion('chapter13')">Chapter 13: Multiple Testing</a></li>
+                            <li class="list-group-item"><a href="#chapter14" class="text-primary" onclick="openAccordion('chapter14')">Chapter 14: Overview of Machine Learning Models</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Overview Section -->
+                <section id="overview" class="mb-5">
+                    <div class="card chapter-card shadow-sm">
+                        <div class="card-body">
+                            <h2 class="card-title fw-bold">Overview</h2>
+                            <p class="card-text">
+                                <em>An Introduction to Statistical Learning with Applications in Python</em> by Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani, and Jonathan Taylor is a foundational text for data scientists and machine learning practitioners. It builds on the R-based predecessor, offering a Python-centric approach with practical labs and exercises using libraries like scikit-learn, pandas, and TensorFlow. The book covers a wide range of statistical learning techniques, from classical linear regression to advanced deep learning, emphasizing both theoretical understanding and practical implementation. It includes real-world datasets (e.g., Advertising, Boston Housing) to illustrate concepts, making it ideal for students in MSDA9223: Data Mining and Information Retrieval.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Chapter Summaries with Accordion -->
+                <div class="accordion" id="chapterAccordion">
+                    <!-- Start Chapter 1 -->
+                    <div class="accordion-item chapter-card">
+                        <h2 class="accordion-header" id="heading1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter1" aria-expanded="true" aria-controls="chapter1">
+                                Chapter 1: Introduction
+                            </button>
+                        </h2>
+                        <div id="chapter1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#chapterAccordion">
+                            <div class="accordion-body">
+                                <h3>Main Idea</h3>
+                                <h4>Definitions</h4>
+                                <ul>
+                                    <li><span class="key-term">Statistical Learning:</span> A framework for modeling and understanding data patterns using statistical methods, enabling predictions or insights.</li>
+                                    <li><span class="key-term">Supervised Learning:</span> Predicting an output variable (response) from input variables (features) using labeled data, e.g., predicting house prices from size and location.</li>
+                                    <li><span class="key-term">Unsupervised Learning:</span> Identifying patterns or structures in data without labeled responses, e.g., grouping customers by purchasing behavior.</li>
+                                </ul>
+                                <h4>Key Concepts</h4>
+                                <ul>
+                                    <li><span class="key-term">Prediction vs. Inference:</span> Prediction focuses on forecasting outcomes (e.g., sales), while inference aims to understand relationships between variables (e.g., how advertising impacts sales).</li>
+                                    <li><span class="key-term">Data Types:</span> Quantitative (numerical, e.g., income) vs. qualitative (categorical, e.g., gender), affecting model choice.</li>
+                                    <li><span class="key-term">Python Ecosystem:</span> Libraries like pandas (data manipulation), scikit-learn (modeling), and matplotlib (visualization) enable practical implementation.</li>
+                                </ul>
+                                <h3>Techniques</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Supervised learning: regression (continuous outputs) and classification (categorical outputs).</li>
+                                    <li class="list-group-item">Unsupervised learning: clustering (grouping similar data) and dimensionality reduction (simplifying data).</li>
+                                    <li class="list-group-item">Python tools: pandas for data manipulation, scikit-learn for modeling, and datasets like Advertising and Wage.</li>
+                                </ul>
+                                <h3>Example</h3>
+                                <p>Loading the Advertising dataset with pandas:</p>
+                                <pre>
+import pandas as pd
+advertising = pd.read_csv('Advertising.csv')
+print(advertising.head())
+                                </pre>
+                                <h3>Sideways</h3>
+                                <p>Emphasizes understanding data types and the trade-off between model interpretability and predictive power. Sets the stage for Python-based labs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chapter 1 -->
+
+                    <!-- Start Chapter 2 -->
+                    <div class="accordion-item chapter-card">
+                        <h2 class="accordion-header" id="heading2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter2" aria-expanded="false" aria-controls="chapter2">
+                                Chapter 2: Statistical Learning
+                            </button>
+                        </h2>
+                        <div id="chapter2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#chapterAccordion">
+                            <div class="accordion-body">
+                                <h3>Main Idea</h3>
+                                <h4>Definitions</h4>
+                                <ul>
+                                    <li><span class="key-term">Statistical Learning:</span> Methods to model data relationships for prediction or inference, using statistical principles.</li>
+                                    <li><span class="key-term">Bias-Variance Tradeoff:</span> Balancing underfitting (high bias, oversimplified model) and overfitting (high variance, overly complex model).</li>
+                                    <li><span class="key-term">Mean Squared Error (MSE):</span> A metric measuring the average squared difference between predicted and actual values.</li>
+                                </ul>
+                                <h4>Key Concepts</h4>
+                                <ul>
+                                    <li><span class="key-term">Parametric vs. Non-Parametric:</span> Parametric methods assume a functional form (e.g., personally regression), while non-parametric methods (e.g., KNN) adapt to data complexity.</li>
+                                    <li><span class="key-term">Curse of Dimensionality:</span> Increased data dimensions lead to sparsity, complicating modeling and requiring more data.</li>
+                                    <li><span class="key-term">Model Assessment:</span> Evaluating model performance using training and test sets to ensure generalization.</li>
+                                </ul>
+                                <h3>Techniques</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Parametric methods: assume a functional form (e.g., linear regression).</li>
+                                    <li class="list-group-item">Non-parametric methods: flexible models like K-nearest neighbors (KNN).</li>
+                                    <li class="list-group-item">Python libraries: NumPy for numerical operations, pandas for data handling, scikit-learn for modeling.</li>
+                                </ul>
+                                <h3>Example</h3>
+                                <p>Fitting a KNN model with scikit-learn:</p>
+                                <pre>
+from sklearn.neighbors import KNeighborsRegressor
+knn = KNeighborsRegressor(n_neighbors=5)
+knn.fit(X_train.reshape(-1, 1), y_train)
+y_pred = knn.predict(X_test.reshape(-1, 1))
+                                </pre>
+                                <h3>Sideways</h3>
+                                <p>Discusses the curse of dimensionality and balancing model complexity. Labs demonstrate data manipulation with pandas. <a href="https://github.com/Musafiri250/Data-Mining-Labs/blob/main/Chapter2_Lab.ipynb" class="btn btn-outline-primary btn-sm">GitHub Lab Notebook</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chapter 2 -->
+
+                    <!-- Start Chapter 3 -->
+                    <div class="accordion-item chapter-card">
+                        <h2 class="accordion-header" id="heading3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter3" aria-expanded="false" aria-controls="chapter3">
+                                Chapter 3: Linear Regression
+                            </button>
+                        </h2>
+                        <div id="chapter3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#chapterAccordion">
+                            <div class="accordion-body">
+                                <h3>Main Idea</h3>
+                                <h4>Definitions</h4>
+                                <ul>
+                                    <li><span class="key-term">Linear Regression:</span> A model assuming a linear relationship between a continuous dependent variable and independent variables.</li>
+                                    <li><span class="key-term">Least Squares:</span> A method to estimate parameters by minimizing the sum of squared residuals.</li>
+                                    <li><span class="key-term">Residual:</span> The difference between observed and predicted values in a regression model.</li>
+                                </ul>
+                                <h4>Key Concepts</h4>
+                                <ul>
+                                    <li><span class="key-term">Simple vs. Multiple Linear Regression:</span> Simple uses one predictor; multiple uses several, capturing complex relationships.</li>
+                                    <li><span class="key-term">Model Diagnostics:</span> Checking assumptions (linearity, normality, homoscedasticity) using residuals, leverage, and collinearity metrics.</li>
+                                    <li><span class="key-term">Multicollinearity:</span> High correlation among predictors, detected via variance inflation factor (VIF), impacting model stability.</li>
+                                </ul>
+                                <h3>Techniques</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Least squares estimation to minimize residuals.</li>
+                                    <li class="list-group-item">Diagnostics: residual analysis, leverage, and collinearity checks (e.g., variance inflation factor).</li>
+                                    <li class="list-group-item">One-hot encoding for categorical predictors using pandas.</li>
+                                </ul>
+                                <h3>Example</h3>
+                                <p>Fitting a linear regression model:</p>
+                                <pre>
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(X_train, y_train)
+print("Coefficients:", model.coef_)
+                                </pre>
+                                <h3>Sideways</h3>
+                                <p>Addresses challenges like non-linearity, outliers, and multicollinearity using datasets like Advertising and Boston Housing. <a href="https://github.com/nyirimanzijeanclaude/data_mining/tree/main/CHAPTER_03" class="btn btn-outline-primary btn-sm">GitHub Lab Notebook</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chapter 3 -->
+
+                    <!-- Start Chapter 4 -->
+                    <div class="accordion-item chapter-card">
+                        <h2 class="accordion-header" id="heading4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter4" aria-expanded="false" aria-controls="chapter4">
+                                Chapter 4: Classification
+                            </button>
+                        </h2>
+                        <div id="chapter4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#chapterAccordion">
+                            <div class="accordion-body">
+                                <h3>Main Idea</h3>
+                                <h4>Definitions</h4>
+                                <ul>
+                                    <li><span class="key-term">Classification:</span> Predicting a categorical response variable (e.g., yes/no, spam/not spam).</li>
+                                    <li><span class="key-term">Logistic Regression:</span> A model predicting class probabilities using a logistic function.</li>
+                                    <li><span class="key-term">Discriminant Analysis:</span> Generative models (LDA, QDA) assuming data follows specific distributions.</li>
+                                </ul>
+                                <h4>Key Concepts</h4>
+                                <ul>
+                                    <li><span class="key-term">Decision Boundaries:</span> Surfaces separating classes, linear in LDA, non-linear in QDA or KNN.</li>
+                                    <li><span class="key-term">Classification Error:</span> The proportion of misclassified observations, used to evaluate model performance.</li>
+                                    <li><span class="key-term">Bayes Classifier:</span> The optimal classifier minimizing error, approximated by methods like LDA or Naive Bayes.</li>
+                                </ul>
+                                <h3>Techniques</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Logistic regression using maximum likelihood estimation.</li>
+                                    <li class="list-group-item">Linear discriminant analysis (LDA) and quadratic discriminant analysis (QDA).</li>
+                                    <li class="list-group-item">Naive Bayes and K-nearest neighbors.</li>
+                                </ul>
+                                <h3>Example</h3>
+                                <p>Fitting a logistic regression model:</p>
+                                <pre>
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+                                </pre>
+                                <h3>Sideways</h3>
+                                <p>Compares model performance using datasets like Default and Bikeshare, highlighting LDA's normality assumptions. <a href="https://github.com/nyirimanzijeanclaude/data_mining/tree/main/CHAPTER_04" class="btn btn-outline-primary btn-sm">GitHub Lab Notebook</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chapter 4 -->
+
+                    <!-- Start Chapter 5 -->
+                    <div class="accordion-item chapter-card">
+                        <h2 class="accordion-header" id="heading5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter5" aria-expanded="false" aria-controls="chapter5">
+                                Chapter 5: Resampling Methods
+                            </button>
+                        </h2>
+                        <div id="chapter5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#chapterAccordion">
+                            <div class="accordion-body">
+                                <h3>Main Idea</h3>
+                                <h4>Definitions</h4>
+                                <ul>
+                                    <li><span class="key-term">Resampling Methods:</span> Techniques like cross-validation and bootstrap to estimate model performance using existing data.</li>
+                                    <li><span class="key-term">Cross-Validation:</span> Splitting data into training and validation sets to assess model generalization.</li>
+                                    <li><span class="key-term">Bootstrap:</span> Sampling with replacement to estimate variability of statistics.</li>
+                                </ul>
+                                <h4>Key Concepts</h4>
+                                <ul>
+                                    <li><span class="key-term">Test Error:</span> The error rate on unseen data, estimated via cross-validation to gauge model performance.</li>
+                                    <li><span class="key-term">Standard Error:</span> Measures variability of parameter estimates, often computed using bootstrap.</li>
+                                    <li><span class="key-term">K-Fold Cross-Validation:</span> Dividing data into K subsets, using each as a validation set while training on the rest.</li>
+                                </ul>
+                                <h3>Techniques</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">K-fold cross-validation for robust error estimation.</li>
+                                    <li class="list-group-item">Leave-one-out cross-validation (LOOCV) for small datasets.</li>
+                                    <li class="list-group-item">Bootstrap for estimating standard errors.</li>
+                                </ul>
+                                <h3>Example</h3>
+                                <p>Performing K-fold cross-validation:</p>
+                                <pre>
+from sklearn.model_selection import cross_val_score
+scores = cross_val_score(model, X, y, cv=5)
+print("Cross-validation scores:", scores.mean())
+                                </pre>
+                                <h3>Sideways</h3>
+                                <p>Emphasizes accurate test error estimation using datasets like Auto. <a href="https://github.com/nyirimanzijeanclaude/data_mining/tree/main/CHAPTER_05" class="btn btn-outline-primary btn-sm">GitHub Lab Notebook</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chapter 5 -->
+
+                    <!-- Start Chapter 6 -->
+                    <div class="accordion-item chapter-card">
+                        <h2 class="accordion-header" id="heading6">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter6" aria-expanded="false" aria-controls="chapter6">
+                                Chapter 6: Linear Model Selection
+                            </button>
+                        </h2>
+                        <div id="chapter6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#chapterAccordion">
+                            <div class="accordion-body">
+                                <h3>Main Idea</h3>
+                                <h4>Definitions</h4>
+                                <ul>
+                                    <li><span class="key-term">Model Selection:</span> Choosing the best subset of predictors to optimize model performance.</li>
+                                    <li><span class="key-term">Regularization:</span> Adding penalties (e.g., ridge, lasso) to reduce overfitting in linear models.</li>
+                                    <li><span class="key-term">Shrinkage Methods:</span> Techniques like ridge regression and lasso that shrink coefficients to improve stability.</li>
+                                </ul>
+                                <h4>Key Concepts</h4>
+                                <ul>
+                                    <li><span class="key-term">Subset Selection:</span> Methods like best subset and stepwise selection to identify important predictors.</li>
+                                    <li><span class="key-term">Ridge vs. Lasso:</span> Ridge penalizes squared coefficients (L2), while lasso penalizes absolute values (L1), promoting sparsity.</li>
+                                    <li><span class="key-term">Dimension Reduction:</span> Techniques like PCR and PLS reduce feature space while retaining predictive power.</li>
+                                </ul>
+                                <h3>Techniques</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Best subset selection and stepwise selection.</li>
+                                    <li class="list-group-item">Ridge regression and lasso.</li>
+                                    <li class="list-group-item">Principal components regression (PCR) and partial least squares (PLS).</li>
+                                </ul>
+                                <h3>Example</h3>
+                                <p>Fitting a lasso model:</p>
+                                <pre>
+from sklearn.linear_model import Lasso
+lasso = Lasso(alpha=1.0)
+lasso.fit(X_train, y_train)
+print("Lasso coefficients:", lasso.coef_)
+                                </pre>
+                                <h3>Sideways</h3>
+                                <p>Explores bias-variance trade-offs using datasets like Hitters. <a href="https://github.com/nyirimanzijeanclaude/data_mining/tree/main/CHAPTER_06" class="btn btn-outline-primary btn-sm">GitHub Lab Notebook</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chapter 6 -->
+
+                    <!-- Start Chapter 7 -->
+                    <div class="accordion-item chapter-card">
+                        <h2 class="accordion-header" id="heading7">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter7" aria-expanded="false" aria-controls="chapter7">
+                                Chapter 7: Moving Beyond Linearity
+                            </button>
+                        </h2>
+                        <div id="chapter7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#chapterAccordion">
+                            <div class="accordion-body">
+                                <h3>Main Idea</h3>
+                                <h4>Definitions</h4>
+                                <ul>
+                                    <li><span class="key-term">Non-Linear Modeling:</span> Methods capturing complex, non-linear relationships between variables.</li>
+                                    <li><span class="key-term">Polynomial Regression:</span> Fitting higher-degree polynomials to model non-linear trends.</li>
+                                    <li><span class="key-term">Splines:</span> Piecewise polynomials joined at knots, providing flexible curve fitting.</li>
+                                </ul>
+                                <h4>Key Concepts</h4>
+                                <ul>
+                                    <li><span class="key-term">Generalized Additive Models (GAMs):</span> Combining non-linear functions of predictors for flexible modeling.</li>
+                                    <li><span class="key-term">Smoothing Splines:</span> Splines with a penalty on roughness to balance fit and smoothness.</li>
+                                    <li><span class="key-term">Flexibility vs. Interpretability:</span> Non-linear models improve fit but may reduce interpretability compared to linear models.</li>
+                                </ul>
+                                <h3>Techniques</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Polynomial regression and basis functions for non-linear fits.</li>
+                                    <li class="list-group-item">Regression splines and smoothing splines.</li>
+                                    <li class="list-group-item">Generalized additive models (GAMs) and local regression.</li>
+                                </ul>
+                                <h3>Example</h3>
+                                <p>Fitting a polynomial regression:</p>
+                                <pre>
+from sklearn.preprocessing import PolynomialFeatures
+poly = PolynomialFeatures(degree=2)
+X_poly = poly.fit_transform(X_train)
+model.fit(X_poly, y_train)
+                                </pre>
+                                <h3>Sideways</h3>
+                                <p>Highlights flexibility using the Wage dataset. <a href="https://github.com/nyirimanzijeanclaude/data_mining/tree/main/CHAPTER_07" class="btn btn-outline-primary btn-sm">GitHub Lab Notebook</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chapter 7 -->
+
+                    <!-- Start Chapter 8 -->
+                    <div class="accordion-item chapter-card">
+                        <h2 class="accordion-header" id="heading8">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter8" aria-expanded="false" aria-controls="chapter8">
+                                Chapter 8: Tree-Based Methods
+                            </button>
+                        </h2>
+                        <div id="chapter8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#chapterAccordion">
+                            <div class="accordion-body">
+                                <h3>Main Idea</h3>
+                                <h4>Definitions</h4>
+                                <ul>
+                                    <li><span class="key-term">Decision Trees:</span> Models splitting data into regions based on feature thresholds for prediction.</li>
+                                    <li><span class="key-term">Ensemble Methods:</span> Combining multiple models (e.g., trees) to improve accuracy and robustness.</li>
+                                    <li><span class="key-term">Random Forests:</span> An ensemble method averaging multiple decision trees with randomized feature selection.</li>
+                                </ul>
+                                <h4>Key Concepts</h4>
+                                <ul>
+                                    <li><span class="key-term">Bagging:</span> Bootstrap aggregating to reduce variance by averaging predictions from multiple trees.</li>
+                                    <li><span class="key-term">Boosting:</span> Sequentially building trees, each correcting errors of the previous, to improve performance.</li>
+                                    <li><span class="key-term">Feature Importance:</span> Measuring the contribution of each feature to predictions in tree-based models.</li>
+                                </ul>
+                                <h3>Techniques</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Decision trees using recursive binary splitting.</li>
+                                    <li class="list-group-item">Bagging and random forests for variance reduction.</li>
+                                    <li class="list-group-item">Boosting (e.g., gradient boosting) and Bayesian additive regression trees (BART).</li>
+                                </ul>
+                                <h3>Example</h3>
+                                <p>Fitting a random forest:</p>
+                                <pre>
+from sklearn.ensemble import RandomForestRegressor
+rf = RandomForestRegressor(n_estimators=100)
+rf.fit(X_train, y_train)
+y_pred = rf.predict(X_test)
+                                </pre>
+                                <h3>Sideways</h3>
+                                <p>Balances interpretability and predictive power using Boston Housing. <a href="https://github.com/nyirimanzijeanclaude/data_mining/tree/main/CHAPTER_08" class="btn btn-outline-primary btn-sm">GitHub Lab Notebook</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chapter 8 -->
+
+                    <!-- Start Chapter 9 -->
+                    <div class="accordion-item chapter-card">
+                        <h2 class="accordion-header" id="heading9">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter9" aria-expanded="false" aria-controls="chapter9">
+                                Chapter 9: Support Vector Machines
+                            </button>
+                        </h2>
+                        <div id="chapter9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#chapterAccordion">
+                            <div class="accordion-body">
+                                <h3>Main Idea</h3>
+                                <h4>Definitions</h4>
+                                <ul>
+                                    <li><span class="key-term">Support Vector Machines (SVMs):</span> Classification models maximizing the margin between classes.</li>
+                                    <li><span class="key-term">Support Vectors:</span> Data points closest to the decision boundary, critical for defining it.</li>
+                                    <li><span class="key-term">Kernel Trick:</span> Transforming data into higher dimensions to handle non-linear boundaries.</li>
+                                </ul>
+                                <h4>Key Concepts</h4>
+                                <ul>
+                                    <li><span class="key-term">Maximal Margin Classifier:</span> Finds the hyperplane with the largest margin between classes.</li>
+                                    <li><span class="key-term">Soft Margin:</span> Allows some misclassifications to improve generalization, controlled by a penalty parameter (C).</li>
+                                    <li><span class="key-term">Kernel Functions:</span> Linear, polynomial, or radial basis function (RBF) kernels enable flexible decision boundaries.</li>
+                                </ul>
+                                <h3>Techniques</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Maximal margin classifier and support vector classifier.</li>
+                                    <li class="list-group-item">SVMs with linear and non-linear kernels (e.g., radial basis function).</li>
+                                    <li class="list-group-item">Multi-class SVMs (one-versus-one, one-versus-all).</li>
+                                </ul>
+                                <h3>Example</h3>
+                                <p>Fitting an SVM with RBF kernel:</p>
+                                <pre>
+from sklearn.svm import SVC
+svm = SVC(kernel='rbf', C=1.0)
+svm.fit(X_train, y_train)
+y_pred = svm.predict(X_test)
+                                </pre>
+                                <h3>Sideways</h3>
+                                <p>Compares SVMs to logistic regression, emphasizing robustness to non-linear boundaries. <a href="https://github.com/nyirimanzijeanclaude/data_mining/tree/main/CHAPTER_09" class="btn btn-outline-primary btn-sm">GitHub Lab Notebook</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chapter 9 -->
+
+                    <!-- Start Chapter 10 -->
+                    <div class="accordion-item chapter-card">
+                        <h2 class="accordion-header" id="heading10">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter10" aria-expanded="false" aria-controls="chapter10">
+                                Chapter 10: Deep Learning
+                            </button>
+                        </h2>
+                        <div id="chapter10" class="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#chapterAccordion">
+                            <div class="accordion-body">
+                                <h3>Main Idea</h3>
+                                <h4>Definitions</h4>
+                                <ul>
+                                    <li><span class="key-term">Deep Learning:</span> Using neural networks with multiple layers to model complex data patterns.</li>
+                                    <li><span class="key-term">Perceptron:</span> The basic unit of a neural network, combining inputs with weights and an activation function.</li>
+                                    <li><span class="key-term">Convolutional Neural Networks (CNNs):</span> Neural networks designed for structured data like images.</li>
+                                </ul>
+                                <h4>Key Concepts</h4>
+                                <ul>
+                                    <li><span class="key-term">Backpropagation:</span> An algorithm to update weights by minimizing a loss function via gradient descent.</li>
+                                    <li><span class="key-term">Overfitting:</span> When a model learns training data noise, reducing generalization to new data.</li>
+                                    <li><span class="key-term">Dropout:</span> A regularization technique randomly disabling neurons to prevent overfitting.</li>
+                                </ul>
+                                <h3>Techniques</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Single-layer and multilayer perceptrons.</li>
+                                    <li class="list-group-item">Convolutional neural networks (CNNs) for image data.</li>
+                                    <li class="list-group-item">Recurrent neural networks (RNNs) for sequential data.</li>
+                                </ul>
+                                <h3>Example</h3>
+                                <p>Building a simple neural network with TensorFlow:</p>
+                                <pre>
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+model = Sequential([Dense(64, activation='relu', input_shape=(X_train.shape[1],)), Dense(1)])
+model.compile(optimizer='adam', loss='mse')
+model.fit(X_train, y_train, epochs=10)
+                                </pre>
+                                <h3>Sideways</h3>
+                                <p>Addresses overfitting and large data requirements using MNIST and IMDB datasets. <a href="https://github.com/Musafiri250/Data-Mining-Labs/blob/main/Chapter10_Lab.ipynb" class="btn btn-outline-primary btn-sm">GitHub Lab Notebook</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chapter 10 -->
+
+                    <!-- Start Chapter 11 -->
+                    <div class="accordion-item chapter-card">
+                        <h2 class="accordion-header" id="heading11">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter11" aria-expanded="false" aria-controls="chapter11">
+                                Chapter 11: Survival Analysis
+                            </button>
+                        </h2>
+                        <div id="chapter11" class="accordion-collapse collapse" aria-labelledby="heading11" data-bs-parent="#chapterAccordion">
+                            <div class="accordion-body">
+                                <h3>Main Idea</h3>
+                                <h4>Definitions</h4>
+                                <ul>
+                                    <li><span class="key-term">Survival Analysis:</span> Statistical methods for analyzing time-to-event data, often in medical or reliability contexts.</li>
+                                    <li><span class="key-term">Censoring:</span> When the event time is not fully observed (e.g., a patient leaves a study).</li>
+                                    <li><span class="key-term">Survival Function:</span> The probability of surviving past a given time.</li>
+                                </ul>
+                                <h4>Key Concepts</h4>
+                                <ul>
+                                    <li><span class="key-term">Hazard Function:</span> The instantaneous rate of occurrence of the event at a given time.</li>
+                                    <li><span class="key-term">Cox Proportional Hazards Model:</span> A regression model assuming constant hazard ratios over time.</li>
+                                    <li><span class="key-term">Kaplan-Meier Estimator:</span> A non-parametric method to estimate the survival function from censored data.</li>
+                                </ul>
+                                <h3>Techniques</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Kaplan-Meier survival curves.</li>
+                                    <li class="list-group-item">Log-rank test for comparing survival distributions.</li>
+                                    <li class="list-group-item">Cox proportional hazards model.</li>
+                                </ul>
+                                <h3>Example</h3>
+                                <p>Fitting a Cox model with lifelines:</p>
+                                <pre>
+from lifelines import CoxPHFitter
+cph = CoxPHFitter()
+cph.fit(df, duration_col='time', event_col='event')
+cph.print_summary()
+                                </pre>
+                                <h3>Sideways</h3>
+                                <p>Focuses on censored data handling in medical research. <a href="https://github.com/Musafiri250/Data-Mining-Labs/blob/main/Chapter11_Lab.ipynb" class="btn btn-outline-primary btn-sm">GitHub Lab Notebook</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chapter 11 -->
+
+                    <!-- Start Chapter 12 -->
+                    <div class="accordion-item chapter-card">
+                        <h2 class="accordion-header" id="heading12">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter12" aria-expanded="false" aria-controls="chapter12">
+                                Chapter 12: Unsupervised Learning
+                            </button>
+                        </h2>
+                        <div id="chapter12" class="accordion-collapse collapse" aria-labelledby="heading12" data-bs-parent="#chapterAccordion">
+                            <div class="accordion-body">
+                                <h3>Main Idea</h3>
+                                <h4>Definitions</h4>
+                                <ul>
+                                    <li><span class="key-term">Unsupervised Learning:</span> Discovering patterns in data without labeled responses.</li>
+                                    <li><span class="key-term">Clustering:</span> Grouping similar data points based on feature similarity.</li>
+                                    <li><span class="key-term">Dimensionality Reduction:</span> Reducing the number of features while preserving data structure.</li>
+                                </ul>
+                                <h4>Key Concepts</h4>
+                                <ul>
+                                    <li><span class="key-term">Principal Components Analysis (PCA):</span> Projects data into a lower-dimensional space maximizing variance.</li>
+                                    <li><span class="key-term">K-Means Clustering:</span> Partitions data into K clusters by minimizing within-cluster variance.</li>
+                                    <li><span class="key-term">Hierarchical Clustering:</span> Builds a tree of clusters, allowing visualization via dendrograms.</li>
+                                </ul>
+                                <h3>Techniques</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Principal components analysis (PCA) for dimensionality reduction.</li>
+                                    <li class="list-group-item">K-means and hierarchical clustering.</li>
+                                    <li class="list-group-item">Handling missing data in unsupervised settings.</li>
+                                </ul>
+                                <h3>Example</h3>
+                                <p>Applying PCA with scikit-learn:</p>
+                                <pre>
+from sklearn.decomposition import PCA
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+print("Explained variance ratio:", pca.explained_variance_ratio_)
+                                </pre>
+                                <h3>Sideways</h3>
+                                <p>Discusses visualization challenges using NCI60 dataset. <a href="https://github.com/nyirimanzijeanclaude/data_mining/tree/main/CHAPTER_12" class="btn btn-outline-primary btn-sm">GitHub Lab Notebook</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chapter 12 -->
+
+                    <!-- Start Chapter 13 -->
+                    <div class="accordion-item chapter-card">
+                        <h2 class="accordion-header" id="heading13">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter13" aria-expanded="false" aria-controls="chapter13">
+                                Chapter 13: Multiple Testing
+                            </button>
+                        </h2>
+                        <div id="chapter13" class="accordion-collapse collapse" aria-labelledby="heading13" data-bs-parent="#chapterAccordion">
+                            <div class="accordion-body">
+                                <h3>Main Idea</h3>
+                                <h4>Definitions</h4>
+                                <ul>
+                                    <li><span class="key-term">Multiple Hypothesis Testing:</span> Conducting multiple statistical tests simultaneously, increasing false positive risk.</li>
+                                    <li><span class="key-term">Family-Wise Error Rate (FWER):</span> The probability of making at least one false positive error.</li>
+                                    <li><span class="key-term">False Discovery Rate (FDR):</span> The expected proportion of false positives among rejected hypotheses.</li>
+                                </ul>
+                                <h4>Key Concepts</h4>
+                                <ul>
+                                    <li><span class="key-term">Bonferroni Correction:</span> A conservative method dividing the significance level by the number of tests.</li>
+                                    <li><span class="key-term">Benjamini-Hochberg Procedure:</span> Controls FDR by ranking p-values and applying adaptive thresholds.</li>
+                                    <li><span class="key-term">Type I vs. Type II Errors:</span> Balancing false positives (Type I) and false negatives (Type II) in multiple testing scenarios.</li>
+                                </ul>
+                                <h3>Techniques</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Bonferroni and Holm methods for FWER control.</li>
+                                    <li class="list-group-item">Benjamini-Hochberg procedure for FDR control.</li>
+                                    <li class="list-group-item">Resampling-based p-value adjustment.</li>
+                                </ul>
+                                <h3>Example</h3>
+                                <p>Applying Benjamini-Hochberg with statsmodels:</p>
+                                <pre>
+from statsmodels.stats.multitest import multipletests
+p_adjusted = multipletests(pvals, method='fdr_bh')[1]
+print("Adjusted p-values:", p_adjusted)
+                                </pre>
+                                <h3>Sideways</h3>
+                                <p>Highlights trade-offs in high-dimensional settings. <a href="https://github.com/Musafiri250/Data-Mining-Labs/blob/main/Chapter13_Lab.ipynb" class="btn btn-outline-primary btn-sm">GitHub Lab Notebook</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chapter 13 -->
+
+                    <!-- Start Chapter 14 -->
+                    <div class="accordion-item chapter-card">
+                        <h2 class="accordion-header" id="heading14">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#chapter14" aria-expanded="false" aria-controls="chapter14">
+                                Chapter 14: Overview of Machine Learning Models
+                            </button>
+                        </h2>
+                        <div id="chapter14" class="accordion-collapse collapse" aria-labelledby="heading14" data-bs-parent="#chapterAccordion">
+                            <div class="accordion-body">
+                                <h3>Main Idea</h3>
+                                <h4>Definitions</h4>
+                                <ul>
+                                    <li><span class="key-term">Machine Learning Models:</span> Algorithms that learn patterns from data to make predictions or uncover structures, categorized by task and data type.</li>
+                                    <li><span class="key-term">Structured Data:</span> Organized data in tabular form (e.g., spreadsheets, databases) with defined features.</li>
+                                    <li><span class="key-term">Unstructured Data:</span> Data without a predefined structure (e.g., images, text, audio), requiring specialized processing.</li>
+                                </ul>
+                                <h4>Key Concepts</h4>
+                                <ul>
+                                    <li><span class="key-term">Supervised Learning Models:</span> Models using labeled data for regression (continuous outputs, e.g., <span class="math-formula">y = \beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p</span>) or classification (categorical outputs, e.g., <span class="math-formula">P(y=1|X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \cdots + \beta_p x_p)}}</span>).</li>
+                                    <li><span class="key-term">Unsupervised Learning Models:</span> Models identifying patterns without labels, such as clustering (e.g., minimizing within-cluster variance <span class="math-formula">\sum_{k=1}^K \sum_{i \in C_k} ||x_i - \mu_k||^2</span>) or dimensionality reduction (e.g., PCA maximizing variance).</li>
+                                    <li><span class="key-term">Model Evaluation:</span> Metrics like MSE (<span class="math-formula">\text{MSE} = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2</span>) for regression, accuracy, or F1-score for classification, and silhouette score for clustering.</li>
+                                </ul>
+                                <h3>Techniques</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <h4>Linear Regression</h4>
+                                        <p>Models continuous outcomes assuming a linear relationship, minimizing the sum of squared residuals (<span class="math-formula">\text{min} \sum_{i=1}^n (y_i - (\beta_0 + \beta_1 x_{i1} + \cdots + \beta_p x_{ip}))^2</span>). <br><strong>Applications:</strong> Regression on structured data (e.g., predicting house prices in Boston Housing dataset). <br><strong>Considerations:</strong> Assumes linearity and independence; sensitive to outliers and multicollinearity.</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h4>Logistic Regression</h4>
+                                        <p>Predicts class probabilities using a logistic function (<span class="math-formula">P(y=1|X) = \frac{1}{1 + e^{-(X\beta)}}</span>), optimized via maximum likelihood. <br><strong>Applications:</strong> Classification on structured data (e.g., spam detection in email datasets). <br><strong>Considerations:</strong> Assumes linear decision boundaries; interpretable but less flexible for complex data.</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h4>Decision Trees</h4>
+                                        <p>Splits data into regions based on feature thresholds, minimizing impurity (e.g., Gini index or entropy for classification). <br><strong>Applications:</strong> Regression and classification on structured data (e.g., predicting sales in Advertising dataset). <br><strong>Considerations:</strong> Interpretable but prone to overfitting; sensitive to small data changes.</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h4>Random Forests</h4>
+                                        <p>Ensembles of decision trees using bagging and feature randomization, reducing variance. <br><strong>Applications:</strong> Regression and classification on structured data (e.g., predicting housing prices); limited use in unstructured data. <br><strong>Considerations:</strong> Robust and accurate but less interpretable; computationally intensive.</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h4>Support Vector Machines</h4>
+                                        <p>Maximizes the margin between classes using a hyperplane, with kernels for non-linear boundaries (<span class="math-formula">\text{min} \frac{1}{2} ||w||^2 + C \sum_{i=1}^n \xi_i</span>). <br><strong>Applications:</strong> Classification on structured (e.g., Default dataset) and unstructured data (e.g., image classification with feature extraction). <br><strong>Considerations:</strong> Effective for high-dimensional data but sensitive to parameter tuning.</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h4>Neural Networks</h4>
+                                        <p>Models complex patterns using layered perceptrons, optimized via backpropagation to minimize loss (e.g., <span class="math-formula">L = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2</span> for regression). <br><strong>Applications:</strong> Regression and classification on unstructured data (e.g., CNNs for MNIST images, RNNs for text). <br><strong>Considerations:</strong> High predictive power but requires large data and computational resources; prone to overfitting.</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h4>K-Means Clustering</h4>
+                                        <p>Partitions data into K clusters by minimizing within-cluster variance (<span class="math-formula">\sum_{k=1}^K \sum_{i \in C_k} ||x_i - \mu_k||^2</span>). <br><strong>Applications:</strong> Unsupervised learning on structured data (e.g., customer segmentation); limited for unstructured data without preprocessing. <br><strong>Considerations:</strong> Requires specifying K; sensitive to initial cluster centers.</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h4>Principal Components Analysis (PCA)</h4>
+                                        <p>Reduces dimensionality by projecting data onto principal components maximizing variance (<span class="math-formula">\text{max} \text{Var}(Z) = X^T X</span>). <br><strong>Applications:</strong> Unsupervised learning on structured data (e.g., NCI60 dataset visualization); preprocessing for unstructured data. <br><strong>Considerations:</strong> Assumes linear relationships; may lose interpretability.</p>
+                                    </li>
+                                </ul>
+                                <h3>Example</h3>
+                                <p>Comparing models with scikit-learn:</p>
+                                <pre>
+from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.decomposition import PCA
+# Regression
+lr = LinearRegression().fit(X_train, y_train)
+rf_reg = RandomForestRegressor().fit(X_train, y_train)
+# Classification
+log_reg = LogisticRegression().fit(X_train, y_train)
+svc = SVC().fit(X_train, y_train)
+# Unsupervised
+pca = PCA(n_components=2).fit_transform(X)
+                                </pre>
+                                <h3>Sideways</h3>
+                                <p>Summarizes model applicability across domains, emphasizing trade-offs between interpretability (e.g., linear models) and predictive power (e.g., deep learning). Datasets like Advertising (structured) and MNIST (unstructured) illustrate applications. <a href="https://github.com/Musafiri250/Data-Mining-Labs/blob/main/Chapter14_Lab.ipynb" class="btn btn-outline-primary btn-sm">GitHub Lab Notebook</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chapter 14 -->
+                </div>
+
+                <!-- Download PDF Section -->
+                <section id="download" class="mt-5">
+                    <div class="card chapter-card shadow-sm">
+                        <div class="card-body">
+                            <h2 class="card-title fw-bold">Download PDF Summary</h2>
+                            <p class="card-text">Download a PDF version of this summary for offline reading or printing.</p>
+                            <a href="summary.pdf" class="btn btn-primary" download>Download PDF</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-primary back-to-top" id="backToTop" aria-label="Back to top">Back to Top</a>
+
+    <!-- Footer -->
+    <footer class="text-white text-center py-4">
+        <div class="container">
+            <p>Created by Nyirimanzi Jean Claude (ID: 100882) for MSDA9223 | Date: July 6, 2025</p>
+            <p><a href="https://github.com/nyirimanzijeanclaude/data_mining" class="text-white text-decoration-underline">GitHub Repository</a></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDvM2j1K6L6y6R5L8e8k8z8K6L6y6R5L8e8k8z8K6L6y6R5L8e8k8z8K6L6y6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <!-- Custom JS -->
+    <script>
+        // Function to open accordion item
+        function openAccordion(chapterId) {
+            const collapseElement = document.getElementById(chapterId);
+            const bsCollapse = new bootstrap.Collapse(collapseElement, {
+                toggle: true
+            });
+        }
+
+        // Back to Top Button and Scroll Progress
+        window.onscroll = function() {
+            let backToTopButton = document.getElementById("backToTop");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+
+            let scrollProgress = document.getElementById("scrollProgress");
+            let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+            let width = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = width + "%";
+        };
+
+        // Dark Mode Toggle
+        document.getElementById("themeToggle").addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+            document.querySelectorAll(".navbar, footer, .card, .accordion-button").forEach(el => {
+                el.classList.toggle("dark-mode");
+            });
+            this.textContent = document.body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
+        });
+
+        // Chapter Search
+        document.getElementById("chapterSearch").addEventListener("input", function() {
+            let searchTerm = this.value.toLowerCase();
+            let tocItems = document.querySelectorAll("#tocList li");
+            let accordionItems = document.querySelectorAll(".accordion-item");
+
+            tocItems.forEach((item, index) => {
+                let text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = "block";
+                    accordionItems[index].style.display = "block";
+                } else {
+                    item.style.display = "none";
+                    accordionItems[index].style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
